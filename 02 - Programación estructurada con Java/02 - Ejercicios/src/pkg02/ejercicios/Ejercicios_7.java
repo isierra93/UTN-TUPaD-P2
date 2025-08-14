@@ -10,7 +10,7 @@ import java.util.Scanner;
  *
  * @author sierr
  */
-public class Ejercicios7 {
+public class Ejercicios_7 {
 
     /**
      * 7. Validación de Nota entre 0 y 10 (do-while).

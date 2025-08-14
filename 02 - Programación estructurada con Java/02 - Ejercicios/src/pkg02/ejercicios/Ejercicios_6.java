@@ -10,7 +10,7 @@ import java.util.Scanner;
  *
  * @author sierr
  */
-public class Ejercicios6 {
+public class Ejercicios_6 {
 
     /**
      * 6. Contador de Positivos, Negativos y Ceros (for).

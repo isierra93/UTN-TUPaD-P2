@@ -10,7 +10,7 @@ import java.util.Scanner;
  *
  * @author sierr
  */
-public class Ejercicios5 {
+public class Ejercicios_5 {
 
     /**
      * 5. Suma de Números Pares (while).

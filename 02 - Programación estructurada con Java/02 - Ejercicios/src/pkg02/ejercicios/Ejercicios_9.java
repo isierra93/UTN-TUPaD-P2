@@ -4,11 +4,13 @@
  */
 package pkg02.ejercicios;
 
+import java.util.Scanner;
+
 /**
  *
  * @author sierr
  */
-public class Ejercicios9 {
+public class Ejercicios_9 {
 
     /**
     9. Composición de funciones para calcular costo de envío y total de compra.
@@ -26,18 +28,38 @@ public class Ejercicios9 {
      * @param args the command line arguments
      */
     public static void main(String[] args) {
-        // TODO code application logic here
+        Scanner scan = new Scanner(System.in);
+        double precioPaq, pesoPaq, costoEnvio;
+        String zonaEnv;
+        
+        System.out.print("Ingrese el precio del paquete: $ ");
+        precioPaq = Double.parseDouble(scan.nextLine());
+        
+        System.out.print("Ingrese el peso del paquete: kg ");
+        pesoPaq = Double.parseDouble(scan.nextLine());
+        
+        System.out.print("Ingrese la zona de envio: ");
+        zonaEnv = scan.nextLine();
+        
+        costoEnvio = calcularCostoEnvio(pesoPaq, zonaEnv);
+        System.out.println("Costo envio: $ " + costoEnvio);
+        System.out.println("El total a pagar: $ " + calcularTotalCompra(precioPaq, costoEnvio));
+        
     }
     
     private static double calcularCostoEnvio( double peso, String zona ){
         double costoTotal = 0;
         
-        if (zona == "Nacional") {
+        if (zona.equalsIgnoreCase("Nacional")) {
             costoTotal = peso * 5;
-        } else if (zona == "Internacional") {
+        } else if (zona.equalsIgnoreCase("Internacional")){
             costoTotal = peso * 10;
         }
         
         return costoTotal;
+    }
+    
+    private static double calcularTotalCompra(double precioProducto, double costoEnvio) {
+        return precioProducto + costoEnvio;
     }
 }

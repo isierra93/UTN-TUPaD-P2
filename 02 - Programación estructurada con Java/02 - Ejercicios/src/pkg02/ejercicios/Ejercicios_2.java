@@ -10,7 +10,7 @@ import java.util.Scanner;
  *
  * @author sierr
  */
-public class Ejercicios2 {
+public class Ejercicios_2 {
 
     /**
      * 2. Determinar el Mayor de Tres Números.

@@ -10,7 +10,7 @@ import java.util.Scanner;
  *
  * @author sierr
  */
-public class Ejercicios1 {
+public class Ejercicios_1 {
 
     /**
      * 1. Verificación de Año Bisiesto.

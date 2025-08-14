@@ -10,7 +10,7 @@ import java.util.Scanner;
  *
  * @author sierr
  */
-public class Ejercicios4 {
+public class Ejercicios_4 {
 
     /**
      * 4. Calculadora de Descuento según categoría.

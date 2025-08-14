@@ -10,7 +10,7 @@ import java.util.Scanner;
  *
  * @author sierr
  */
-public class Ejercicios8 {
+public class Ejercicios_8 {
 
     /**
      * 8. Cálculo del Precio Final con impuesto y descuento.

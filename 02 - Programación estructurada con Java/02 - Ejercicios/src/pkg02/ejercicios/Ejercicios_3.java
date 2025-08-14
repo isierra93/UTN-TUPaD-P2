@@ -10,7 +10,7 @@ import java.util.Scanner;
  *
  * @author sierr
  */
-public class Ejercicios3 {
+public class Ejercicios_3 {
 
     /**
      * 3. Clasificación de Edad.
