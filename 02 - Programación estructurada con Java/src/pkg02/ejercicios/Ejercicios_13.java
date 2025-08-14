@@ -28,19 +28,22 @@ public class Ejercicios_13 {
         precios[4] = 89.99;
         
         System.out.println("Precios originales:");
+        mostrarPreciosRecur(precios, 0 );
         
-        mostrarPreciosRecur(precios, precios.length );
-        precios[0] = 5;
+        precios[4] = 5;
         
         System.out.println("Precios modificados:");
+        mostrarPreciosRecur(precios, 0 );
     }
     
     public static void mostrarPreciosRecur (double[] data, int index) {
-        if (index == 0) {
-            System.out.println(data[0]);
-            
+        if (index == data.length) {
+            return;
         }
-        mostrarPreciosRecur(data, index -1);
+        System.out.println(data[index]);
+        mostrarPreciosRecur(data, index + 1);
+        
     }
+    
     
 }
