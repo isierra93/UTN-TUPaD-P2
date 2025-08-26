@@ -42,6 +42,30 @@ public class Tp_03 {
         System.out.println(libro.getAnioPublicacion());
         libro.setAnioPublicacion(1949);
         System.out.println(libro.getAnioPublicacion());
+        
+        //Gallina
+        Gallina gallina_1 = new Gallina();
+        gallina_1.setIdGallina(1);
+        gallina_1.envejecer();
+        gallina_1.envejecer();
+        gallina_1.envejecer();
+        gallina_1.ponerHuevo();
+        gallina_1.mostrarEstado();
+        
+        Gallina gallina_2 = new Gallina();
+        gallina_2.setIdGallina(2);
+        gallina_2.envejecer();
+        gallina_2.ponerHuevo();
+        gallina_2.ponerHuevo();
+        gallina_2.mostrarEstado();
+        
+        //Nave Espacial
+        NaveEspacial nave = new NaveEspacial();
+        nave.setNombre("ARSAT");
+        nave.recargarCombustible(25);
+        nave.avanzar(10);
+        nave.mostrarEstado();
+        nave.avanzar(16);
     }
     
 }
