@@ -14,6 +14,7 @@ public class Ejercicio {
      * @param args the command line arguments
      */
     public static void main(String[] args) {
+        // ver hashcode e equals
         Empleado a1 = new Empleado("Javier", "Front-End");
         Empleado a2 = new Empleado(3322, "Elizabeth", "Data Analist", 1200000);
 

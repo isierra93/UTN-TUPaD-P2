@@ -14,7 +14,6 @@ public class Empleado {
     private String puesto;
     private double salario;
     private static int totalEmpleados;
-    private static int contador;
 
     public Empleado(int id, String nombre, String puesto, double salario) {
         this.id = id;
@@ -25,7 +24,7 @@ public class Empleado {
     }
 
     public Empleado(String nombre, String puesto) {
-        this.id = 0;
+        this.id = this.hashCode();
         this.nombre = nombre;
         this.puesto = puesto;
         this.salario = 1000000.00;
@@ -56,16 +55,16 @@ public class Empleado {
         this.salario = salario;
     }
     
-    public void actualizarSalario(double salario) {
-        if (salario > 0 && salario <= 100) {
-            double nuevoSueldo = this.salario += this.salario * (salario / 100);
+    public void actualizarSalario(double porcentaje) {
+        if (porcentaje > 0) {
+            double nuevoSueldo = this.salario * (1 + porcentaje / 100);
             setSalario(nuevoSueldo);
         }
     }
     
-    public void actualizarSalario(int salario) {
-        if (salario > 0) {
-            setSalario(this.salario + salario);
+    public void actualizarSalario(int cantFija) {
+        if (cantFija > 0) {
+            setSalario(this.salario + cantFija);
         }
     }
 
