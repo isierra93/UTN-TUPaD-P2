@@ -1,0 +1,6 @@
+@startuml
+class ejercicio1.Ejercicio1
+class ejercicio1.Foto
+class ejercicio1.Pasaporte
+class ejercicio1.Titular
+@enduml
