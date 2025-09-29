@@ -41,6 +41,12 @@ public class Producto {
         return cantidad;
     }
 
+    public void setCantidad(int cantidad) {
+        if (cantidad > 0) {
+            this.cantidad = cantidad;
+        }
+    }
+
     public CategoriaProducto getCategoriaProducto() {
         return categoriaProducto;
     }

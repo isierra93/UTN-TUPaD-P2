@@ -40,8 +40,45 @@ public class Inventario {
 
     public void eliminarProducto(String id) {
         Producto prodaBorrar = buscarProductoPorId(id);
-
         productos.remove(prodaBorrar);
+    }
+
+    public void actualizarStock(String id, int nuevaCantidad) {
+        Producto prodEncontrado = buscarProductoPorId(id);
+        if (prodEncontrado != null) {
+            prodEncontrado.setCantidad(nuevaCantidad);
+        }
+    }
+
+    public ArrayList<Producto> filtrarPorCategoria(CategoriaProducto categoria) {
+        ArrayList<Producto> prodFiltrados = new ArrayList<>();
+        for (int i = 0; i < productos.size(); i++) {
+            if (productos.get(i).getCategoriaProducto() == categoria ) {
+                prodFiltrados.add(productos.get(i));
+            }
+        }
+        return prodFiltrados;
+    }
+
+    public int obtenerTotalStock() {
+        int totalStock = 0;
+        for (Producto prod : productos) {
+            totalStock = totalStock + prod.getCantidad();
+        }
+        return totalStock;
+    }
+
+    public Producto obtenerProductoConMayorStock() {
+        Producto prodConMayorStock = null;
+        int mayorStock = 0;
+        for (Producto prod : productos) {
+            if (prod.getCantidad() > mayorStock) {
+                mayorStock = prod.getCantidad();
+                prodConMayorStock = prod;
+            }
+        }
+
+        return prodConMayorStock;
     }
 
 }

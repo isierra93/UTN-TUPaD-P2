@@ -11,19 +11,23 @@
 //        9. Filtrar productos con precios entre $1000 y $3000.
 //        10. Mostrar las categorías disponibles con sus descripciones
 
+import java.util.ArrayList;
+
 public class Main {
     public static void main(String[] args) {
+        Inventario inventario = new Inventario();
+        crearyCargarProductos(inventario);
 
+
+    }
+
+    private static void crearyCargarProductos(Inventario i) {
         Producto p1 = new Producto("ASD123", "LECHE", 1600, 300, CategoriaProducto.ALIMENTOS);
         Producto p2 = new Producto("FGH321", "TV LED 32'",  320000 , 25, CategoriaProducto.ELECTRONICA);
-        Producto p3 = new Producto("JKL098", "LAVANDINA", 3000, 233, CategoriaProducto.HOGAR);
-        Inventario inv = new Inventario();
-        inv.agregarProducto(p1);
-        inv.agregarProducto(p2);
-        inv.agregarProducto(p3);
+        Producto p3 = new Producto("JKL098", "LAVANDINA", 3000, 225, CategoriaProducto.HOGAR);
 
-        inv.listarProductos();
-        inv.eliminarProducto("ASD123");
-        inv.listarProductos();
+        i.agregarProducto(p1);
+        i.agregarProducto(p2);
+        i.agregarProducto(p3);
     }
 }
