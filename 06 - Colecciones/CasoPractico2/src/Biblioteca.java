@@ -63,17 +63,4 @@ public class Biblioteca {
         return autoresDisponibles;
     }
 
-//    public Autor buscarAutorPorId(String id) {
-//        Autor autorEncontrado = null;
-//        int i = 0;
-//        while (i < libros.size() && !libros.get(i).getIsbn().equals(isbn)){
-//            i++;
-//        }
-//        if (i < libros.size()){
-//            autorEncontrado = libros.get(i);
-//        }
-//        return autorEncontrado;
-//    }
-
-
 }
