@@ -56,25 +56,24 @@ public class Biblioteca {
     public List<Autor> mostrarAutoresDisponibles() {
         List<Autor> autoresDisponibles = new ArrayList<>();
         for (Libro l : libros) {
-            if (autoresDisponibles.get){
-
+            if (!autoresDisponibles.contains(l.getAutor())){
+                autoresDisponibles.add(l.getAutor());
             }
-            autoresDisponibles.add(l.getAutor());
         }
         return autoresDisponibles;
     }
 
-    public Autor buscarAutorPorId(String id) {
-        Autor autorEncontrado = null;
-        int i = 0;
-        while (i < libros.size() && !libros.get(i).getIsbn().equals(isbn)){
-            i++;
-        }
-        if (i < libros.size()){
-            autorEncontrado = libros.get(i);
-        }
-        return autorEncontrado;
-    }
+//    public Autor buscarAutorPorId(String id) {
+//        Autor autorEncontrado = null;
+//        int i = 0;
+//        while (i < libros.size() && !libros.get(i).getIsbn().equals(isbn)){
+//            i++;
+//        }
+//        if (i < libros.size()){
+//            autorEncontrado = libros.get(i);
+//        }
+//        return autorEncontrado;
+//    }
 
 
 }
