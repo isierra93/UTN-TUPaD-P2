@@ -36,6 +36,10 @@ public class Profesor {
         return especialidad;
     }
 
+    public List<Curso> getCursos() {
+        return cursos;
+    }
+
     public void mostrarInfo() {
         System.out.println(this);
     }

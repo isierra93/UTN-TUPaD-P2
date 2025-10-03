@@ -66,11 +66,15 @@ public class Universidad {
         }
     }
 
-    //• eliminarProfesor(String id) → Antes de remover, dejar null los cursos que
-//dictaba.
-
     public void eliminarProfesor(String id) {
-
+        Profesor profesoraEliminar = buscarProfesorPorId(id);
+        if (profesoraEliminar != null) {
+            List<Curso> cursosDelProfesoraEliminar = profesoraEliminar.getCursos();
+            for (Curso c : new ArrayList<>(cursosDelProfesoraEliminar)) {
+                profesoraEliminar.eliminarCurso(c);
+            }
+            profesores.remove(profesoraEliminar);
+        }
     }
 
     public void listarProfesores() {

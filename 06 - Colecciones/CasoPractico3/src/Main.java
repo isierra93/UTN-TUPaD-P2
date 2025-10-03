@@ -43,9 +43,11 @@ public class Main {
         uni.eliminarCurso("PPE323");
         uni.listarProfesores();
 //        7. Remover un profesor y dejar profesor = null,
-        System.out.println("-------------\n Remover un profesor::");
-        
+        System.out.println("-------------\n Remover un profesor: " + uni.buscarProfesorPorId("1"));
+        uni.eliminarProfesor("1");
+        uni.listarCursos();
 //        8. Mostrar un reporte: cantidad de cursos por profesor.
-
+        System.out.println("Cantidad de cursos por profesor: ");
+        uni.listarProfesores();
     }
 }

@@ -12,10 +12,17 @@ public class Curso {
     //toString evitando recursividad al llamar a profesor
     @Override
     public String toString() {
+        if (profesor != null) {
+            return "Curso{" +
+                    "codigo='" + codigo + '\'' +
+                    ", nombre='" + nombre + '\'' +
+                    ", profesor=" + profesor.getNombre() +
+                    '}';
+        }
         return "Curso{" +
                 "codigo='" + codigo + '\'' +
                 ", nombre='" + nombre + '\'' +
-                ", profesor=" + profesor.getNombre() +
+                ", profesor=" + profesor +
                 '}';
     }
 
