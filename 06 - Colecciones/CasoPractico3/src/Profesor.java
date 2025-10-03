@@ -12,17 +12,8 @@ public class Profesor {
         this.nombre = nombre;
         this.especialidad = especialidad;
     }
-    //Constructor sobrecargado para recibir una lista de cursos
-    //Se deberia inicializar el arralist en el constructor - Ver despues
-//    public Profesor(String id, String nombre, String especialidad, List<Curso> cursos) {
-//        this.id = id;
-//        this.nombre = nombre;
-//        this.especialidad = especialidad;
-//        for (Curso c : cursos) {
-//            this.agregarCurso(c);
-//        }
-//    }
 
+    //toString evitando recursividad al llamar a cursos
     @Override
     public String toString() {
         return "Profesor{" +
@@ -50,23 +41,35 @@ public class Profesor {
     }
 
     public void listarCursos() {
+        if (cursos.isEmpty()) {
+            System.out.println("El profesor: " +
+                    this.nombre+
+                    " no tiene cursos asignados.");
+            return;
+        }
         for (Curso c : cursos) {
             System.out.println("Codigo: "+c.getCodigo()+"\n"+
-                    "Nombre del curso: " +c.getNombre());
+                    "Nombre del curso: " +c.getNombre()+"\n"+
+                    "Profesor: " +c.getProfesor());
         }
     }
 
     public void agregarCurso(Curso c) {
-        if (!cursos.contains(c)) {
+        if (c != null && !cursos.contains(c)) {
             cursos.add(c);
-            c.setProfesor(this);
+            if (c.getProfesor() != this) { // Evita bucle
+                c.setProfesor(this);
+            }
         }
     }
 
     public void eliminarCurso(Curso c) {
-        if (cursos.contains(c)) {
+        if (c != null && cursos.contains(c)) {
             cursos.remove(c);
-            c.setProfesor(null);
+            if (c.getProfesor() == this) { // Solo lo desasocia si corresponde
+                c.setProfesor(null);
+            }
         }
     }
+
 }

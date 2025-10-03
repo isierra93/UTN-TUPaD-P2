@@ -3,25 +3,21 @@ import java.util.List;
 
 public class Universidad {
     private String nombre;
-    private List<Profesor> profesores;
-    private List<Curso> cursos;
+    private List<Profesor> profesores = new ArrayList<>();
+    private List<Curso> cursos = new ArrayList<>();
 
     public Universidad(String nombre) {
         this.nombre = nombre;
-        this.profesores = new ArrayList<>();
-        this.cursos = new ArrayList<>();
     }
 
-    //Agregar validaicon de idprofesor
     public void agregarProfesor(Profesor p) {
-        if (!profesores.contains(p)) {
+        if (p != null && !profesores.contains(p)) {
             profesores.add(p);
         }
     }
-    //Agregar validacion de codigo
+
     public void agregarCurso(Curso c) {
-        Curso codigoValido = buscarCursoPorCodigo(c.getCodigo());
-        if (!cursos.contains(c)) {
+        if (c != null && !cursos.contains(c)) {
             cursos.add(c);
         }
     }
@@ -30,7 +26,11 @@ public class Universidad {
         Curso curso = buscarCursoPorCodigo(codigoCurso);
         Profesor profe = buscarProfesorPorId(idProfesor);
         if (curso != null && profe != null) {
-            curso.setProfesor(profe);
+            Profesor profeAnterior = curso.getProfesor();
+            if (profeAnterior != null) {
+                profeAnterior.eliminarCurso(curso);
+            }
+            profe.agregarCurso(curso);
         }
     }
 
@@ -58,12 +58,10 @@ public class Universidad {
         return cursoEncontrado;
     }
 
-    //• eliminarCurso(String codigo) → Debe romper la relación con su profesor
-//si la hubiera.
     public void eliminarCurso(String codigo) {
         Curso cursoaEliminar = buscarCursoPorCodigo(codigo);
         if (cursoaEliminar != null) {
-            cursoaEliminar.setProfesor(null);
+            cursoaEliminar.getProfesor().eliminarCurso(cursoaEliminar);
             cursos.remove(cursoaEliminar);
         }
     }

@@ -9,12 +9,13 @@ public class Curso {
         this.nombre = nombre;
     }
 
+    //toString evitando recursividad al llamar a profesor
     @Override
     public String toString() {
         return "Curso{" +
                 "codigo='" + codigo + '\'' +
                 ", nombre='" + nombre + '\'' +
-                ", profesor=" + profesor +
+                ", profesor=" + profesor.getNombre() +
                 '}';
     }
 
@@ -34,15 +35,7 @@ public class Curso {
         return profesor;
     }
 
-    public void setProfesor(Profesor profesor) {
-        if (profesor == null) {
-            this.profesor = null;
-            return;
-        }
-        if (this.profesor != profesor) {
-            this.profesor.eliminarCurso(this);
-            this.profesor = profesor;
-            profesor.agregarCurso(this);
-        }
+    public void setProfesor(Profesor p) {
+        this.profesor = p;
     }
 }
