@@ -15,6 +15,7 @@ public class Main {
         listaAnimales.add(a3);
 
         for (Animal a : listaAnimales) {
+            a.describirAnimal();
             a.hacerSonido();
         }
     }
