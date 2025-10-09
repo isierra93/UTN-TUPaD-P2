@@ -16,7 +16,9 @@ public class Main {
         ));
 
         for (Empleado f : listaEmpleados) {
-            System.out.println("Empleado: " + f.getNombreCompleto() + " Salario: " + f.calcularSueldo());
+            System.out.println("Empleado: " + f.getNombreCompleto() +
+                    " Salario: " + f.calcularSueldo() +
+                    " Tipo: " + (f instanceof EmpleadoPlanta ? "Planta" : "Temporal"));
         }
 
     }
