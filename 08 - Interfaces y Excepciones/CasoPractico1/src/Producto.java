@@ -8,8 +8,8 @@ public class Producto implements Pagable{
     }
 
     @Override
-    public void calcularTotal() {
-
+    public double calcularTotal() {
+        return precio;
     }
 
     public String getNombre() {

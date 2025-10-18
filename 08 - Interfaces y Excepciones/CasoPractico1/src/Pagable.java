@@ -1,3 +1,3 @@
 public interface Pagable {
-    public abstract void calcularTotal();
+    public abstract double calcularTotal();
 }
