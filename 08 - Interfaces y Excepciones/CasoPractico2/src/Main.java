@@ -1,11 +1,3 @@
-import java.io.*;
-
-//Parte 2: Ejercicios sobre Excepciones
-
-//4. Excepción personalizada
-//○ Crear EdadInvalidaException. Lanzarla si la edad es menor a 0 o
-//mayor a 120. Capturarla y mostrar mensaje.
-
 public class Main {
     public static void main(String[] args) {
         //1. División segura
@@ -31,7 +23,11 @@ public class Main {
         LectorDeArchivo lector = new LectorDeArchivo();
         lector.leerArchivo(filePath);
 
+        //4. Excepción personalizada
+        //○ Crear EdadInvalidaException. Lanzarla si la edad es menor a 0 o
+        //mayor a 120. Capturarla y mostrar mensaje.
+        Validador val = new Validador();
+        val.validarEdad();
 
     }
-
 }
