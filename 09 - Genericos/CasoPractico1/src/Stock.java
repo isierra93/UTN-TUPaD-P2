@@ -11,7 +11,9 @@ public class Stock < T extends Comparable<T> >{
     }
 
     public void agregarItem(T item) {
-        this.items.add(item);
+        if (!this.items.contains(item)){
+            this.items.add(item);
+        }
     }
 
     public List<T> obtenerItemsOrdenadosNaturalmente() {
@@ -25,4 +27,15 @@ public class Stock < T extends Comparable<T> >{
         Collections.sort(itemsOrdenados, comparador);
         return itemsOrdenados;
     }
+
+    public List<T> buscarItems(Criterio<T> criterio) {
+        List<T> nuevaLista = new ArrayList<>();
+        for (T t : items){
+            if (criterio.cumple(t)){
+                nuevaLista.add(t);
+            }
+        }
+        return nuevaLista;
+    }
+
 }
