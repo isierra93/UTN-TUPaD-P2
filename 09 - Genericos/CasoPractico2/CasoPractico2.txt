@@ -1,0 +1,93 @@
+Parte 1: Caso Práctico - Plan de Estudio Genérico
+Contexto: Vamos a modelar las asignaturas de un plan de estudios. Queremos que el sistema sea genérico para manejar distintos tipos de materias (obligatorias, optativas, etc.) y que nos permita ordenarlas de distintas formas.
+
+1. Definir la Interfaz y la Clase Modelo (Comparable)
+
+Crear una interfaz Materia que defina los métodos: String getNombre() y int getCreditos().
+
+Crear una clase Asignatura que implemente Materia.
+
+Asignatura debe tener los atributos: codigo (String, ej: "BD-101"), nombre (String) y creditos (int).
+
+Implementar la interfaz Comparable<Asignatura> en la clase Asignatura.
+
+Sobrescribir el método compareTo() para que el orden natural sea por codigo (alfabético ascendente).
+
+Incluir un toString() para fácil visualización.
+
+2. Definir Ordenamientos Alternativos (Comparator)
+
+Crear una clase ComparadorMateriaPorNombre que implemente Comparator<Materia>. Debe ordenar alfabéticamente por nombre.
+
+Crear una clase ComparadorMateriaPorCreditos que implemente Comparator<Materia>. Debe ordenar por creditos (de mayor a menor).
+
+Pista: Para orden descendente, puedes invertir la lógica de la resta (ej. o2.getCreditos() - o1.getCreditos()).
+
+3. Crear la Clase Contenedora Genérica (PlanDeEstudio)
+
+Crear una clase genérica PlanDeEstudio<T>.
+
+Atributo: private List<T> materias; (inicializarla en el constructor).
+
+Método: agregarMateria(T materia).
+
+Reto de Diseño: ¿Cómo modificamos la firma de la clase PlanDeEstudio<T> para asegurarnos de que T sea, como mínimo, una Materia Y que también sea Comparable?
+
+Pista: Puedes acotar un tipo genérico a múltiples interfaces usando el símbolo &. (Ej: T extends Interfaz1 & Interfaz2).
+
+4. Implementar Métodos de Ordenación en PlanDeEstudio
+
+Añadir un método obtenerMateriasOrdenadas():
+
+Debe devolver una List<T> ordenada según el orden natural (Comparable).
+
+Añadir un método obtenerMateriasOrdenadas(Comparator<? super T> comparador):
+
+Debe devolver una List<T> ordenada según el Comparator recibido.
+
+Pista: Usar ? super T en el Comparator lo hace más flexible, permitiendo usar un Comparator<Materia> para ordenar una lista de Asignatura.
+
+5. Prueba de Integración (TestAcademico)
+
+Crear una clase TestAcademico (o usa tu Main).
+
+Crear una instancia de PlanDeEstudio<Asignatura>.
+
+Agregar 3 o 4 Asignatura en desorden.
+
+Probar y mostrar por consola los resultados de:
+
+Ordenado por Código (natural).
+
+Ordenado por Nombre (con ComparadorMateriaPorNombre).
+
+Ordenado por Créditos (con ComparadorMateriaPorCreditos).
+
+Parte 2: Ejercicios sobre Wildcards y Métodos Genéricos
+1. Método de Utilidad (Producer Extends)
+
+Crear una clase UtilidadAcademica.
+
+Crear un método estático imprimirResumen(PlanDeEstudio<? extends Materia> plan).
+
+El método debe iterar sobre las materias del plan (puedes usar obtenerMateriasOrdenadas()) y calcular e imprimir el total de créditos de ese plan.
+
+Pregunta de análisis: ¿Por qué usamos ? extends Materia? ¿Qué nos permite aceptar este método (ej. PlanDeEstudio<Asignatura>, PlanDeEstudio<Optativa>)? ¿Por qué no podríamos agregar una Asignatura al plan dentro de este método?
+
+2. Método de Utilidad (Consumer Super)
+
+En la clase UtilidadAcademica, crear un método estático <T extends Materia & Comparable<T>> transferirAprobadas(PlanDeEstudio<T> plan, List<? super T> actaDeFinales).
+
+El método debe tomar todas las materias del plan y agregarlas a la lista actaDeFinales.
+
+Pregunta de análisis: ¿Por qué usamos List<? super T> para actaDeFinales? ¿Qué nos permitiría hacer? (Ej. transferir un PlanDeEstudio<Asignatura> a una List<Materia> o a una List<Object>).
+
+3. Interfaz y Método de Búsqueda Genérica (Patrón Estrategia)
+
+Definir una interfaz genérica Requisito<T> con un método: boolean esCumplido(T materia).
+
+En la clase PlanDeEstudio<T>, agregar un método List<T> filtrarMaterias(Requisito<T> requisito).
+
+Este método debe devolver una nueva lista solo con las materias que cumplan el requisito.
+
+Prueba: En tu TestAcademico, usa este método para filtrar y mostrar solo las materias que tengan más de 4 créditos (puedes usar una clase anónima o una lambda).

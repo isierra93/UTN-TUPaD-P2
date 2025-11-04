@@ -1,0 +1,33 @@
+Parte 2: Ejercicios sobre Comodines (Wildcards) y Métodos Genéricos
+1. Método de Utilidad (Producer Extends)
+Crear una clase UtilidadInventario.
+Crear un método estático imprimirNombres(Stock<? extends Producto> stockDeProductos)
+
+El método debe iterar sobre el Stock
+(usando getItemsOrdenadosNaturalmente()) e imprimir
+solo el nombre de cada Producto.
+
+Pregunta de análisis: ¿Por qué usamos ? extends Producto aquí?
+¿Qué pasaría si intentáramos agregar un nuevo Producto a stockDeProductos
+dentro de este método?
+
+
+2. Método de Utilidad (Consumer Super)
+
+En la misma clase UtilidadInventario,
+crear un método estático transferirItems(Stock<T> origen, Stock<? super T> destino).
+El método debe tomar todos los items del Stock origen y agregarlos al Stock destino.
+Pregunta de análisis: ¿Por qué usamos ? super T en destino?
+¿Qué nos permite hacer esto que no podríamos hacer con Stock<T> o Stock<? extends T>?
+
+
+3. Interfaz y Método de Búsqueda Genérica
+Definir una interfaz genérica Criterio<T> con un único método: boolean cumple(T item).
+
+En la clase Stock<T>, agregar un método List<T> buscarItems(Criterio<T> criterio).
+
+Este método debe devolver una nueva lista solo con los items que devuelvan true
+al aplicar el criterio.cumple(item).
+
+Prueba: En tu TestInventario, implementa un Criterio<Producto>
+(puede ser con una clase anónima o lambda) que busque productos con precio mayor a 100.
