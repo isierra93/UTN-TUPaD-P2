@@ -1,17 +1,28 @@
 package org.example;
 
-//TIP To <b>Run</b> code, press <shortcut actionId="Run"/> or
-// click the <icon src="AllIcons.Actions.Execute"/> icon in the gutter.
 public class Main {
-    static void main() {
-        //TIP Press <shortcut actionId="ShowIntentionActions"/> with your caret at the highlighted text
-        // to see how IntelliJ IDEA suggests fixing it.
-        IO.println(String.format("Hello and welcome!"));
+    public static void main(String[] args) {
+        PlanDeEstudio<Asignatura> planDeEstudio = new PlanDeEstudio<>();
+        planDeEstudio.agregarMateria(new Asignatura("ZZZ333", "Matemática", 33));
+        planDeEstudio.agregarMateria(new Asignatura("ASD123", "Inglés 2", 3));
+        planDeEstudio.agregarMateria(new Asignatura("DSA332", "Inglés 1", 10));
+        planDeEstudio.agregarMateria(new Asignatura("ZZZ111", "Base de datos 1", 7));
 
-        for (int i = 1; i <= 5; i++) {
-            //TIP Press <shortcut actionId="Debug"/> to start debugging your code. We have set one <icon src="AllIcons.Debugger.Db_set_breakpoint"/> breakpoint
-            // for you, but you can always add more by pressing <shortcut actionId="ToggleLineBreakpoint"/>.
-            IO.println("i = " + i);
-        }
+        System.out.println("Materias ordenadas por Codigo:");
+        System.out.println(planDeEstudio.obtenerMateriasOrdenadas());
+
+        System.out.println("Materias ordenadas por Nombre:");
+        System.out.println(planDeEstudio.obtenerMateriasOrdenadas(new ComparadorMateriaPorNombre()));
+
+        System.out.println("Materias ordenadas por Creditos:");
+        System.out.println(planDeEstudio.obtenerMateriasOrdenadas(new ComparadorMateriaPorCreditos()));
+
+        System.out.println("Materias que tengan más de 4 créditos:");
+        System.out.println(planDeEstudio.filtrarMaterias(new Requisito<Asignatura>() {
+            @Override
+            public boolean esCumplido(Asignatura materia) {
+                return materia.getCreditos() > 4;
+            }
+        }));
     }
 }
